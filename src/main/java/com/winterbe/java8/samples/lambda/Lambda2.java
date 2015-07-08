@@ -21,17 +21,16 @@ public class Lambda2 {
     }
 
     public static void main(String[] args) {
+    	//lambda create function
         Converter<String, Integer> integerConverter1 = (from) -> Integer.valueOf(from);
         Integer converted1 = integerConverter1.convert("123");
         System.out.println(converted1);   // result: 123
 
 
         // method reference
-
         Converter<String, Integer> integerConverter2 = Integer::valueOf;
         Integer converted2 = integerConverter2.convert("123");
         System.out.println(converted2);   // result: 123
-
 
         Something something = new Something();
 
@@ -40,8 +39,8 @@ public class Lambda2 {
         System.out.println(converted3);    // result J
 
         // constructor reference
-
         PersonFactory<Person> personFactory = Person::new;
         Person person = personFactory.create("Peter", "Parker");
+        System.out.println(person); // result Person [firstName=Peter, lastName=Parker]
     }
 }

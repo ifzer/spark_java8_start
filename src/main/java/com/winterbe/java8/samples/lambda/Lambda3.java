@@ -31,11 +31,16 @@ public class Lambda3 {
         predicate.negate().test("foo");     // false
 
         Predicate<Boolean> nonNull = Objects::nonNull;
+        System.out.println("nonNull " + nonNull.test("" == null));//true
+        
         Predicate<Boolean> isNull = Objects::isNull;
-
+        System.out.println("isNull " + isNull.test(null));//true
+        System.out.println("null == null " + (null == null));//true
+        
         Predicate<String> isEmpty = String::isEmpty;
         Predicate<String> isNotEmpty = isEmpty.negate();
 
+        Predicate<Integer> positive = (i) -> i > 0 ;
 
         // Functions
 
@@ -48,14 +53,13 @@ public class Lambda3 {
         // Suppliers
 
         Supplier<Person> personSupplier = Person::new;
-        personSupplier.get();   // new Person
-
+        Person person = personSupplier.get();   // new Person
+        System.out.println(person);
 
         // Consumers
 
         Consumer<Person> greeter = (p) -> System.out.println("Hello, " + p.firstName);
-        greeter.accept(new Person("Luke", "Skywalker"));
-
+        greeter.accept(new Person("Luke", "Skywalker")); // print Hello luke
 
 
         // Comparators
